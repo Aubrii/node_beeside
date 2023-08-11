@@ -8,8 +8,6 @@ module.exports = {
 };
 
 async function authenticate(email, password) {
-    console.log('email', email)
-    console.log('password', password)
     return new Promise((resolve, reject) => {
         db.query("SELECT * FROM users WHERE email = ? AND password = ? ", [email, password], function (err, result, fields) {
             console.log("result authentificate", result)
@@ -23,16 +21,6 @@ async function authenticate(email, password) {
         });
     });
 
-    //
-    //
-    // const user = await db.query('SELECT * FROM users WHERE email = ? AND password = ?',
-    //     [email, password]
-    // );
-    // if (!user )
-    //     throw 'Username or password is incorrect';
-    // else{
-    //     return user
-    // }
 }
 
 
@@ -71,8 +59,6 @@ async function getById(userId) {
         });
     } catch (error) {
         throw error;
-    } finally {
-        db.end();
     }
 }
 
